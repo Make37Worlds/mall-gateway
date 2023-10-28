@@ -5,8 +5,8 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 3737
+      targetPort: 3737
       nodePort: 32000
   selector:
     app: spring-cloud-gateway

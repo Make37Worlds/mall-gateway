@@ -1,26 +1,14 @@
-# Use the official maven/Java 8 image to create a build artifact.
-FROM maven:3.6-jdk-8 as builder
+# Use the official OpenJDK base image
+FROM openjdk:17-ea-jdk-slim
 
-# Set the working directory.
-WORKDIR /usr/src/app
+# Set the working directory in the container
+WORKDIR /app
 
-# Copy the pom.xml file to download dependencies.
-COPY pom.xml ./
+# Copy the jar file built by Maven into the container
+COPY target/mall-gateway-0.0.1-SNAPSHOT.jar app.jar
 
-# Download the dependencies.
-RUN mvn dependency:go-offline -B
+# Expose the port the app runs on
+EXPOSE 3737
 
-# Copy the source code.
-COPY src ./src
-
-# Build the application.
-RUN mvn package
-
-# Use OpenJDK to run the built jar.
-FROM openjdk:8-jre-slim
-
-# Copy the jar from the builder stage.
-COPY --from=builder /usr/src/app/target/*.jar /app.jar
-
-# Command to run the application.
-CMD ["java", "-jar", "/app.jar"]
+# Command to run the application
+CMD ["java", "-jar", "app.jar"]
