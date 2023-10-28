@@ -16,4 +16,4 @@ spec:
         - name: spring-cloud-gateway
           image: 171312460935.dkr.ecr.ap-southeast-1.amazonaws.com/mall-gateway:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 3737
