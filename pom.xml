@@ -127,12 +127,6 @@
 
 
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-core</artifactId>
-            <version>3.5.3.2</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>RELEASE</version>
@@ -159,32 +153,7 @@
             <version>4.0.0</version>
             <scope>provided</scope>
         </dependency>
-
-        <!-- shiro -->
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-spring-boot-web-starter</artifactId>
-            <version>1.4.0</version>
-        </dependency>
-        <!-- jwt jar-->
-        <dependency>
-            <groupId>com.auth0</groupId>
-            <artifactId>java-jwt</artifactId>
-            <version>3.4.0</version>
-        </dependency>
-
-        <!-- fastjson -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.47</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-            <version>2.3.31</version> <!-- Use the latest version -->
-        </dependency>
+        
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
