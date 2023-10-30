@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="mall-member" />
+        <module name="mall-gateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="mall-gateway" target="17" />
+      <module name="mall-member" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
