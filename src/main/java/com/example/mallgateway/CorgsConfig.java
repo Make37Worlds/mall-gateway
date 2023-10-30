@@ -16,7 +16,7 @@ public class CorgsConfig {
     public CorsWebFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
         config.addAllowedMethod("*");
-        config.addAllowedOrigin("*");
+        config.addAllowedOrigin("http://13.212.107.51:30385");
         config.addAllowedHeader("*");
         config.setAllowCredentials(true);
 
