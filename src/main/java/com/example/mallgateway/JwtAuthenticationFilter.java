@@ -15,12 +15,14 @@ import java.util.List;
 import static com.example.mallgateway.util.JwtUtils.verifyToken;
 
 public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
-    private final List<String> permitAllPaths = List.of("/api/mallmember/login");
+    private final List<String> permitAllPaths = List.of("/login");
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
         String path = exchange.getRequest().getPath().value();
+        System.out.println("!!!!!!!!!");
+        System.out.println(path);
         // Check if the path is in the permit all list
         if (permitAllPaths.contains(path)) {
 
