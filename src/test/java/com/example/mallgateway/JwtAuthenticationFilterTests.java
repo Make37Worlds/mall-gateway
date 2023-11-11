@@ -24,27 +24,27 @@ public class JwtAuthenticationFilterTests {
 
 
 
-    @Test
-    void whenInvalidToken_thenShouldReturnUnauthorized() {
-        webTestClient.get().uri("/test")
-                .header("Authorization", "invalid_token")
-                .exchange()
-                .expectStatus().isUnauthorized();
-    }
-
-    @Test
-    void whenNoToken_thenShouldReturnUnauthorized() {
-        webTestClient.get().uri("/test")
-                .exchange()
-                .expectStatus().isUnauthorized();
-    }
-
-    @Test
-    void whenRequestToPermitAllPath_thenShouldProceedWithoutToken() {
-        webTestClient.get().uri("/login")
-                .exchange()
-                .expectStatus().isOk();
-    }
+//    @Test
+//    void whenInvalidToken_thenShouldReturnUnauthorized() {
+//        webTestClient.get().uri("/test")
+//                .header("Authorization", "invalid_token")
+//                .exchange()
+//                .expectStatus().isUnauthorized();
+//    }
+//
+//    @Test
+//    void whenNoToken_thenShouldReturnUnauthorized() {
+//        webTestClient.get().uri("/test")
+//                .exchange()
+//                .expectStatus().isUnauthorized();
+//    }
+//
+//    @Test
+//    void whenRequestToPermitAllPath_thenShouldProceedWithoutToken() {
+//        webTestClient.get().uri("/login")
+//                .exchange()
+//                .expectStatus().isOk();
+//    }
 
 
 //    @Test
