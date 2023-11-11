@@ -27,7 +27,7 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
             return chain.filter(exchange); // Skip JWT check
         }
 
-        String token = exchange.getRequest().getHeaders().getFirst("Authorization");
+        String token = exchange.getRequest().getHeaders().getFirst("token");
         DecodedJWT jwt = verifyToken(token, "mall-gatewall/src/main/java/com/example/mallgateway/keys/public_key.pem");
         if (jwt == null) {
             exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
