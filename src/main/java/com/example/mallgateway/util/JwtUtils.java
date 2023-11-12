@@ -18,7 +18,8 @@ public class JwtUtils {
         String publicKeyPEM = Files.readString(Paths.get(publicKeyFile))
                 .replace("-----BEGIN PUBLIC KEY-----", "")
                 .replaceAll(System.lineSeparator(), "")
-                .replace("-----END PUBLIC KEY-----", "");
+                .replace("-----END PUBLIC KEY-----", "")
+                .replaceAll("\\s+","");
 
         byte[] encoded = Base64.getDecoder().decode(publicKeyPEM);
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
@@ -30,6 +31,7 @@ public class JwtUtils {
     public static DecodedJWT verifyToken(String token, String publicKeyFilename) {
         try {
             RSAPublicKey publicKey = getPublicKey(publicKeyFilename);
+
             Algorithm algorithm = Algorithm.RSA256(publicKey, null);
             return JWT.require(algorithm).build().verify(token);
         } catch (Exception e) {

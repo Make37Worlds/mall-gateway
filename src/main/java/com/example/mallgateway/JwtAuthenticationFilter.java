@@ -15,22 +15,19 @@ import java.util.List;
 import static com.example.mallgateway.util.JwtUtils.verifyToken;
 
 public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
-    private final List<String> permitAllPaths = List.of("/login");
+    private final List<String> permitAllPaths = List.of("/api/mallmember/login");
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
         String path = exchange.getRequest().getPath().value();
-        System.out.println("!!!!!!!!!");
-        System.out.println(path);
         // Check if the path is in the permit all list
         if (permitAllPaths.contains(path)) {
 
             return chain.filter(exchange); // Skip JWT check
         }
-
         String token = exchange.getRequest().getHeaders().getFirst("Authorization");
-        DecodedJWT jwt = verifyToken(token, "mall-gatewall/src/main/java/com/example/mallgateway/keys/public_key.pem");
+        DecodedJWT jwt = verifyToken(token, "src/main/java/com/example/mallgateway/keys/public_key.pem");
         if (jwt == null) {
             exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
             return exchange.getResponse().setComplete();

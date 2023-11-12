@@ -3,12 +3,12 @@ package com.example.mallgateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-@WebFluxTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import(JwtAuthenticationFilter.class)
 public class JwtAuthenticationFilterTests {
 
@@ -19,37 +19,37 @@ public class JwtAuthenticationFilterTests {
 
     @BeforeEach
     void setUp() {
-        validToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsImV4cCI6MTY5OTcxOTg2MiwidXNlcklkIjoiMSIsImlhdCI6MTY5OTcxOTg2Mn0.baE-9jJaeeK1pvtZ8LLyGJ9Eu3GDJZTzOjWD6kq2VOm-rq0SW8hfV-xU91VOVMc7xVq-eM9vQxOY-qYSHDFLjtZuiTOmtxFx8QTSarKyqjjFE24CqZ5vcU5x79POf5vqaNd5UQOsZDdtG-TRfkKkG22R7ZilzQq9UQp2T255vXtz-9v4v__MKtGLtnvZbBgDWgtaQwTF3ht1if7RcaUNSTL5hNt-n2M-gtmYqDd3A6Sl6TtSsf5e6JYxgUTS4-HPaAv1QmGcK8Le0Rz_M_5wqrxKlcBU9nhhHrzJshTYqkRS9bythMVxB_Vthb7f0Iv_yMVnV2eLHwgjGZaVaCJ_vg";
+        validToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsImV4cCI6MTY5OTc2NTMxNCwidXNlcklkIjoiMSIsImlhdCI6MTY5OTc2MTcxNH0.JEZMJ_SyrkNGunmK9L0RaMQfiLfDgPYrXctTsLrzxJ2Jt3iSxvlvs_v-ozYOrxSCgqUXHpykzgS_jq5BxuvzyoiOK_huBdknT2l4CnRzODCL5xq6OLh7miItVRkYafi5W8nyVzqpYzcUcrKuwX10H5QwlocwG_r92ffkv7s-csZTVD8kZh_Ihp-8CiIYx36MNrOxWYZAWyU1Gw-PsS8V2gXysIUAVwvCbKiTVbuCApkmYpT5q7b29o2mjB7eLwiWTv0VAFlCKlaJoAYi-4pDeFe74_We0Tkl2xvP4tifld0UOI0iMmz8bE0jjGIsasVjHz0dYCgN3CrnzpkPBW5fvg";
     }
 
 
 
-//    @Test
-//    void whenInvalidToken_thenShouldReturnUnauthorized() {
-//        webTestClient.get().uri("/test")
-//                .header("Authorization", "invalid_token")
-//                .exchange()
-//                .expectStatus().isUnauthorized();
-//    }
-//
-//    @Test
-//    void whenNoToken_thenShouldReturnUnauthorized() {
-//        webTestClient.get().uri("/test")
-//                .exchange()
-//                .expectStatus().isUnauthorized();
-//    }
-//
+    @Test
+    void whenInvalidToken_thenShouldReturnUnauthorized() {
+        webTestClient.get().uri("/api/mallmember/test")
+                .header("Authorization", "invalid_token")
+                .exchange()
+                .expectStatus().isUnauthorized();
+    }
+
+    @Test
+    void whenNoToken_thenShouldReturnUnauthorized() {
+        webTestClient.get().uri("/api/mallmember/test")
+                .exchange()
+                .expectStatus().isUnauthorized();
+    }
+
 //    @Test
 //    void whenRequestToPermitAllPath_thenShouldProceedWithoutToken() {
-//        webTestClient.get().uri("/login")
+//        webTestClient.get().uri("/api/mallmember/login")
 //                .exchange()
 //                .expectStatus().isOk();
 //    }
-
-
+//
+//
 //    @Test
 //    void whenValidToken_thenShouldProceed() {
-//        webTestClient.get().uri("/test")
+//        webTestClient.get().uri("/api/mallmember/test")
 //                .header("Authorization", validToken)
 //                .exchange()
 //                .expectStatus().isOk();
