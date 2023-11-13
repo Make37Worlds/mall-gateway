@@ -15,7 +15,7 @@ import java.util.List;
 import static com.example.mallgateway.util.JwtUtils.verifyToken;
 
 public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
-    private final List<String> permitAllPaths = List.of("/api/mallmember/login");
+    private final List<String> permitAllPaths = List.of("/api/mallmember/login","/api/mallmember/member/add");
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
